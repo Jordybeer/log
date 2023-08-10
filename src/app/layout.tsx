@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({
   children,
 }: {
-  ,children: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -59,7 +59,8 @@ export default function RootLayout({
                 socialButtonsPlacement: "bottom",
               },
             }}
-
+            style={{ border: "1px solid white", display: "flex", justifyContent: "center" }}
+          >
             <Box h="auto" w="auto" px={4}>
               {children}
             </Box>
