@@ -20,39 +20,66 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <style>
+          {`
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+            body {
+              animation: fadeIn 1s ease-in-out;
+            }
+          `}
+        </style>
+      </head>
       <body
         className={inter.className}
         style={{
           background: "linear-gradient(to bottom right, #320850 , #2E51BB)",
           backgroundSize: "cover",
+          backgroundPosition: "center",
+
           backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
+          backgroundAttachment: "relative",
         }}
       >
-        <ChakraCenter h="100vh" mx="auto">
+        <ChakraCenter h="100vh" mx="auto" position="relative">
           <ClerkProvider
             appearance={{
               baseTheme: dark,
               variables: {
-                colorBackground: "#0B0C666C",
+                colorBackground: "#0D0F69CC",
               },
               layout: {
-                logoImageUrl: "https://i.imgur.com/UfNPoEK.png",
-                logoPlacement: "inside",
                 socialButtonsPlacement: "bottom",
               },
             }}
+            style={{ border: "1px solid white", display: "flex", justifyContent: "center" }}
           >
             <Box h="auto" w="auto" px={4}>
-              <img
-                src="https://i.imgur.com/UfNPoEK.png"
-                alt="logo"
-                style={{ transform: "scale(2)", width: "200px", height: "200px" }}
-                className={inter.className}
-              />
               {children}
             </Box>
           </ClerkProvider>
+          <img
+            src="https://i.imgur.com/UfNPoEK.png"
+            alt="logo"
+            style={{
+              width: "70%",
+              height: "auto",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: "-1",
+              opacity: "0.3",
+            }}
+            className={inter.className}
+          />
         </ChakraCenter>
       </body>
     </html>
