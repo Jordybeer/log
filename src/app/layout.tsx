@@ -1,23 +1,18 @@
 // app/layout.tsx
 import { dark } from "@clerk/themes";
-import type { AppProps } from "next/app";
+import type { NextComponentType, NextPageContext } from "next";
 import { Inter } from "next/font/google";
-import { ClerkProvider, SignIn } from "@clerk/nextjs";
-
-
-const {
-  Center: ChakraCenter,
-  Flex,
-  Box: ChakraBox,
-  Box,
-} = require("@chakra-ui/react");
+import { ClerkProvider } from "@clerk/nextjs";
+import { Center, Box } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+
+interface Props {
+  Component: NextComponentType<NextPageContext, any, {}>;
+  pageProps: any;
+}
+
+export default function RootLayout({ Component, pageProps }: Props) {
   return (
     <html lang="en">
       <head>
@@ -43,12 +38,11 @@ export default function RootLayout({
           background: "linear-gradient(to bottom right, #320850 , #2E51BB)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "relative",
         }}
       >
-        <ChakraCenter h="100vh" mx="auto" position="relative">
+        <Center h="100vh" mx="auto" position="relative">
           <ClerkProvider
             appearance={{
               baseTheme: dark,
@@ -59,10 +53,9 @@ export default function RootLayout({
                 socialButtonsPlacement: "bottom",
               },
             }}
-            style={{ border: "1px solid white", display: "flex", justifyContent: "center" }}
           >
             <Box h="auto" w="auto" px={4}>
-              {children}
+              <Component {...pageProps} />
             </Box>
           </ClerkProvider>
           <img
@@ -80,7 +73,7 @@ export default function RootLayout({
             }}
             className={inter.className}
           />
-        </ChakraCenter>
+        </Center>
       </body>
     </html>
   );
