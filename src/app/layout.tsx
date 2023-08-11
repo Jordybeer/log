@@ -1,3 +1,5 @@
+"use client"
+
 // app/layout.tsx
 import { dark } from "@clerk/themes";
 import type { NextComponentType, NextPageContext } from "next";
