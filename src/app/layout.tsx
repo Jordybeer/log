@@ -5,8 +5,8 @@ import { dark } from "@clerk/themes";
 import type { NextComponentType, NextPageContext } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Center } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
+import { Center, Box } from "@chakra-ui/react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
